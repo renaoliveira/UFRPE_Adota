@@ -30,7 +30,7 @@ public class Fachada {
 
 	}
 
-	public void inserir(Pessoa pessoa) throws PessoaCadastradaException, PessoaInexistenteException {
+	public void inserir(Pessoa pessoa) throws PessoaCadastradaException{
 		this.pessoas.cadastrar(pessoa);
 	}
 	

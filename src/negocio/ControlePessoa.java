@@ -12,7 +12,7 @@ public class ControlePessoa{
 		this.pessoas = repositorio;
 	}
 
-	public void cadastrar(Pessoa pessoa) throws PessoaCadastradaException, PessoaInexistenteException{
+	public void cadastrar(Pessoa pessoa) throws PessoaCadastradaException{
 		if (pessoa != null) {
 			if (!(pessoas.existe(pessoa.getLogin()))) {
 				pessoas.inserir(pessoa);

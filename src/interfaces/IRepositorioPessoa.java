@@ -13,5 +13,5 @@ public interface IRepositorioPessoa {
 
 	public void atualizar(Pessoa pessoa);
 
-	public boolean existe(String login) throws PessoaInexistenteException;
+	public boolean existe(String login);
 }

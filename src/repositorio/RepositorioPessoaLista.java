@@ -100,12 +100,20 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 		pessoa = getNo(pessoa.getLogin()).pessoa;
 	}
 
-	public boolean existe(String login) throws PessoaInexistenteException{
-		if (procurar(login) != null)
-			return true;
-		else return false;	
-		
-			
+	public boolean existe(String login){
+		boolean achou = false;
+		String n;
+		while (!achou && pessoa != null) {
+			n = pessoa.getLogin();
+			if (n.equals(login)) {
+				achou = true;
+			} else {
+				return prox.existe(login);
+			}
+		}
+		if(pessoa == null)
+			return false;
+		else return true;
 	}
 
 }

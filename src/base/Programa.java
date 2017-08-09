@@ -10,7 +10,7 @@ import repositorio.RepositorioPessoaArray;
 
 public class Programa {
 
-	public static void main(String[] args) throws PessoaCadastradaException, PessoaInexistenteException {
+	public static void main(String[] args){
 		Fachada f = Fachada.getInstance();
 
 		Pessoa p1 = new Pessoa("Renato.Oliveira");
