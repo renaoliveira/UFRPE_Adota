@@ -49,6 +49,7 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 		
 		if (this.pessoa == null) {
 			this.pessoa = pessoa;
+			
 			tam++;// Aumenta o tamanho da lista;
 			prox = new RepositorioPessoaLista();
 			indice = tam;// Quando o objeto é instanciado ele armazena sua
