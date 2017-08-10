@@ -9,6 +9,7 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 
 	private Pessoa pessoa;
 	private RepositorioPessoaLista prox;
+	private static RepositorioPessoaLista instance;
 	public static int tam; // Tamanho da Lista. Atributo pertence a classe e não
 							// ao objeto;
 	private int indice; // Respectiva posição na lista. Atributo pertence ao
@@ -23,6 +24,13 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 	
 	public int getIndice(){
 		return indice;
+	}
+	
+	public static RepositorioPessoaLista getInstance(){
+		if(RepositorioPessoaLista.instance == null)
+			RepositorioPessoaLista.instance = new RepositorioPessoaLista();
+		
+		return RepositorioPessoaLista.instance;
 	}
 	
 	public RepositorioPessoaLista getProx() {
