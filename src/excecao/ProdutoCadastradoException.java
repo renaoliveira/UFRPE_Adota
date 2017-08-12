@@ -6,7 +6,7 @@ public class ProdutoCadastradoException extends Exception {
 	public ProdutoCadastradoException(String idProduto){
 		super("PRODUTO JÁ FOI CADASTRADO!");
 		this.idProduto = idProduto;
-	}
+	}	
 	
 	public ProdutoCadastradoException(){
 		
