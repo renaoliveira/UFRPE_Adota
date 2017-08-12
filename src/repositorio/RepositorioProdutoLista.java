@@ -8,11 +8,22 @@ import negocio.Produto;
 public class RepositorioProdutoLista implements IRepositorioProduto{
 	private Produto produto;
 	private RepositorioProdutoLista prox;
+	private static RepositorioProdutoLista instance;
 	public static int tam; /* Tamanho da lista, atributo pertence a classe.*/
 	private int indice; /* Respectiva posição da lista, atributo pertence ao objeto */
 	
 	public RepositorioProdutoLista(){
 		
+	}
+	
+	/* Verifica a instancia do repositório. 
+	 * Se existir, retorna a instância. Se for nula, ele cria uma instancia do repositório. 
+	*/
+	public static RepositorioProdutoLista getInstance(){
+		if(RepositorioProdutoLista.instance == null)
+			RepositorioProdutoLista.instance = new RepositorioProdutoLista();
+		
+		return RepositorioProdutoLista.instance;
 	}
 	
 	public int getIndice(){
