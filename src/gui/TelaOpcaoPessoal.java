@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSplitPane;
+import javax.swing.JToggleButton;
 
 public class TelaOpcaoPessoal extends JFrame {
 
@@ -45,6 +47,13 @@ public class TelaOpcaoPessoal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
+		tglbtnNewToggleButton.setBounds(88, 21, 121, 23);
+		contentPane.add(tglbtnNewToggleButton);
+		
+		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("New toggle button");
+		tglbtnNewToggleButton_1.setBounds(204, 21, 121, 23);
+		contentPane.add(tglbtnNewToggleButton_1);
 	}
-
 }

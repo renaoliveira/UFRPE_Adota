@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class TelaInscricao extends JFrame {
 
@@ -24,8 +25,8 @@ public class TelaInscricao extends JFrame {
 	private static JFrame telaInscricaoInstance;
 	private JTextField textFieldLogin;
 	private JTextField textFieldEmail;
-	private JTextField textFieldSenha;
 	private Pessoa p = new Pessoa();
+	private JPasswordField passwordField;
 	/**
 	 * Launch the application.
 	 */
@@ -82,17 +83,12 @@ public class TelaInscricao extends JFrame {
 		textFieldEmail.setBounds(158, 99, 171, 20);
 		contentPane.add(textFieldEmail);
 		
-		textFieldSenha = new JTextField();
-		textFieldSenha.setColumns(10);
-		textFieldSenha.setBounds(158, 137, 171, 20);
-		contentPane.add(textFieldSenha);
-		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				p.setLogin(textFieldLogin.getText());
 				p.setEmail(textFieldEmail.getText());
-				p.setSenha(textFieldSenha.getText());
+				p.setSenha(passwordField.getText());
 				//p = Instancias.getInstancePessoa();
 				try {
 					RepositorioPessoaLista.getInstance().inserir(p);
@@ -105,6 +101,10 @@ public class TelaInscricao extends JFrame {
 		});
 		btnCadastrar.setBounds(203, 186, 89, 23);
 		contentPane.add(btnCadastrar);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(158, 140, 171, 20);
+		contentPane.add(passwordField);
 	}
 
 }
