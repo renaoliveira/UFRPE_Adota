@@ -89,9 +89,10 @@ public class TelaAdocao extends JFrame {
 		JButton btnLarTemporario = new JButton("Ser Lar");
 		btnLarTemporario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastroLarTemporario.getInstance().setVisible(true);
 			}
 		});
-		btnLarTemporario.setBounds(350, 214, 67, 23);
+		btnLarTemporario.setBounds(340, 225, 86, 23);
 		contentPane.add(btnLarTemporario);
 	}
 

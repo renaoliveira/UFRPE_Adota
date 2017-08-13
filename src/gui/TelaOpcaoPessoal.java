@@ -74,7 +74,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaAdocao.getInstance().setVisible(true);
 			}
 		});
-		btnAdotar.setBounds(30, 22, 89, 23);
+		btnAdotar.setBounds(168, 35, 89, 23);
 		contentPane.add(btnAdotar);
 		
 		JButton btnDoar = new JButton("Doar");
@@ -83,11 +83,16 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaDoacao.getInstance().setVisible(true);
 			}
 		});
-		btnDoar.setBounds(30, 55, 89, 23);
+		btnDoar.setBounds(168, 78, 89, 23);
 		contentPane.add(btnDoar);
 		
-		JButton btnLarTemporario = new JButton("Lar Temporario");
-		btnLarTemporario.setBounds(10, 89, 127, 23);
+		JButton btnLarTemporario = new JButton("Cadastrar Lar Temporario");
+		btnLarTemporario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroLarTemporario.getInstance().setVisible(true);
+			}
+		});
+		btnLarTemporario.setBounds(84, 205, 262, 23);
 		contentPane.add(btnLarTemporario);
 	}
 }
