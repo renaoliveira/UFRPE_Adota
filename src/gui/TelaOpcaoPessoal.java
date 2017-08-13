@@ -8,6 +8,26 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JToolBar;
+import javax.swing.JInternalFrame;
+import javax.swing.JSeparator;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JLabel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.Box;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Panel;
+import javax.swing.JTabbedPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaOpcaoPessoal extends JFrame {
 
@@ -48,12 +68,26 @@ public class TelaOpcaoPessoal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
-		tglbtnNewToggleButton.setBounds(88, 21, 121, 23);
-		contentPane.add(tglbtnNewToggleButton);
+		JButton btnAdotar = new JButton("Adotar");
+		btnAdotar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaAdocao.getInstance().setVisible(true);
+			}
+		});
+		btnAdotar.setBounds(30, 22, 89, 23);
+		contentPane.add(btnAdotar);
 		
-		JToggleButton tglbtnNewToggleButton_1 = new JToggleButton("New toggle button");
-		tglbtnNewToggleButton_1.setBounds(204, 21, 121, 23);
-		contentPane.add(tglbtnNewToggleButton_1);
+		JButton btnDoar = new JButton("Doar");
+		btnDoar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaDoacao.getInstance().setVisible(true);
+			}
+		});
+		btnDoar.setBounds(30, 55, 89, 23);
+		contentPane.add(btnDoar);
+		
+		JButton btnLarTemporario = new JButton("Lar Temporario");
+		btnLarTemporario.setBounds(10, 89, 127, 23);
+		contentPane.add(btnLarTemporario);
 	}
 }
