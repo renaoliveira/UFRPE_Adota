@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import java.awt.Color;
 
 public class TelaDoacao extends JFrame {
 
@@ -118,5 +119,16 @@ public class TelaDoacao extends JFrame {
 		});
 		btnDoar.setBounds(246, 198, 87, 23);
 		contentPane.add(btnDoar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(Color.RED);
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaOpcaoPessoal.getInstance().setVisible(true);
+				TelaDoacao.getInstance().setVisible(false);
+			}
+		});
+		btnVoltar.setBounds(176, 227, 89, 23);
+		contentPane.add(btnVoltar);
 	}
 }

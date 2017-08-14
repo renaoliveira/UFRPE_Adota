@@ -21,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaAdocao extends JFrame {
 
@@ -114,7 +115,7 @@ public class TelaAdocao extends JFrame {
 				else textArea.append("Animal de Id: " + textFieldProcurar.getText()+" Não está cadastrado!");				
 			}
 		});
-		btnAdotar.setBounds(340, 182, 86, 32);
+		btnAdotar.setBounds(340, 129, 86, 32);
 		contentPane.add(btnAdotar);
 		
 		JButton btnLarTemporario = new JButton("Ser Lar");
@@ -133,7 +134,7 @@ public class TelaAdocao extends JFrame {
 				}
 			}
 		});
-		btnLarTemporario.setBounds(340, 225, 86, 23);
+		btnLarTemporario.setBounds(340, 184, 86, 23);
 		contentPane.add(btnLarTemporario);
 		//Teste
 		JButton btnInstancia = new JButton("Instancia");
@@ -149,6 +150,17 @@ public class TelaAdocao extends JFrame {
 		});
 		btnInstancia.setBounds(155, 22, 89, 23);
 		contentPane.add(btnInstancia);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(Color.RED);
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaOpcaoPessoal.getInstance().setVisible(true);
+				TelaAdocao.getInstance().setVisible(false);
+			}
+		});
+		btnVoltar.setBounds(340, 227, 89, 23);
+		contentPane.add(btnVoltar);
 	}
 
 }

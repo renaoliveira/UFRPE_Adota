@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaCadastroDoacao extends JFrame {
 
@@ -147,6 +148,7 @@ public class TelaCadastroDoacao extends JFrame {
 		contentPane.add(btnAdicionar);
 		
 		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.setForeground(Color.RED);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaOpcaoPessoal.getInstance().setVisible(true);

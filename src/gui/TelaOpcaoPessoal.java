@@ -28,6 +28,7 @@ import java.awt.Panel;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaOpcaoPessoal extends JFrame {
 
@@ -83,7 +84,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaCadastroDoacao.getInstance().setVisible(true);
 			}
 		});
-		btnCadastrarDoacao.setBounds(109, 171, 218, 23);
+		btnCadastrarDoacao.setBounds(108, 123, 218, 23);
 		contentPane.add(btnCadastrarDoacao);
 		
 		JButton btnLarTemporario = new JButton("Cadastrar Lar Temporario");
@@ -92,7 +93,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaCadastroLarTemporario.getInstance().setVisible(true);
 			}
 		});
-		btnLarTemporario.setBounds(84, 205, 262, 23);
+		btnLarTemporario.setBounds(83, 157, 262, 23);
 		contentPane.add(btnLarTemporario);
 		
 		JButton btnDoar = new JButton("Doar");
@@ -103,5 +104,15 @@ public class TelaOpcaoPessoal extends JFrame {
 		});
 		btnDoar.setBounds(168, 79, 89, 23);
 		contentPane.add(btnDoar);
+		
+		JButton btnSair = new JButton("Voltar");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaOpcaoPessoal.getInstance().dispose();
+			}
+		});
+		btnSair.setForeground(Color.RED);
+		btnSair.setBounds(168, 227, 89, 23);
+		contentPane.add(btnSair);
 	}
 }
