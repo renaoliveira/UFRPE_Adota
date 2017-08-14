@@ -1,7 +1,6 @@
 package repositorio;
 
 import excecao.DoacaoProdutoInexistenteException;
-import excecao.RemocaoNaoConcluidaException;
 import excecao.SemPosicaoLivreException;
 import interfaces.IRepositorioDoacaoProduto;
 import negocio.DoacaoProduto;
@@ -68,7 +67,7 @@ public class RepositorioDoacaoProdutoArray implements IRepositorioDoacaoProduto 
 
 	
 	@Override
-	public void remover(String idDoacao) throws RemocaoNaoConcluidaException {
+	public void remover(String idDoacao) throws DoacaoProdutoInexistenteException {
 		boolean achou = false;
 		for (int i = 0; i < this.doacaoprodutos.length; i++) {
 			if (this.doacaoprodutos[i].getIdDoacao().equals(idDoacao)) {
@@ -79,7 +78,7 @@ public class RepositorioDoacaoProdutoArray implements IRepositorioDoacaoProduto 
 			}
 		}
 		if(!achou) {
-			RemocaoNaoConcluidaException e = new RemocaoNaoConcluidaException();
+			DoacaoProdutoInexistenteException e = new DoacaoProdutoInexistenteException(idDoacao);
 			throw e;
 		}
 		

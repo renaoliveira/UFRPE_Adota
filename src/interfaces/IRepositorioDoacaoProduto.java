@@ -2,7 +2,6 @@ package interfaces;
 
 import excecao.SemPosicaoLivreException;
 import excecao.DoacaoProdutoInexistenteException;
-import excecao.RemocaoNaoConcluidaException;
 import negocio.DoacaoProduto;
 
 public interface IRepositorioDoacaoProduto {
@@ -11,7 +10,7 @@ public interface IRepositorioDoacaoProduto {
 	    
 	    public DoacaoProduto procurar (String idDoacao) throws DoacaoProdutoInexistenteException;
 	    
-	    public void remover(String idDoacao) throws RemocaoNaoConcluidaException;
+	    public void remover(String idDoacao) throws DoacaoProdutoInexistenteException;
 	    
 	    public void atualizar(DoacaoProduto doacaoproduto) throws DoacaoProdutoInexistenteException;
 	    

@@ -3,9 +3,6 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -13,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import excecao.ProdutoCadastradoException;
 import negocio.Fachada;
 import negocio.Produto;
-import repositorio.RepositorioProdutoLista;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,6 +22,7 @@ import java.awt.Color;
 
 public class TelaCadastroDoacao extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private static JFrame instance;
 	private JTextField textFieldNome;

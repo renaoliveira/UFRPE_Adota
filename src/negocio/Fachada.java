@@ -13,7 +13,6 @@ import excecao.ProdutoCadastradoException;
 import excecao.ProdutoInexistenteException;
 import excecao.DoacaoProdutoCadastradaException;
 import excecao.DoacaoProdutoInexistenteException;
-import excecao.RemocaoNaoConcluidaException;
 import excecao.SemPosicaoLivreException;
 
 import interfaces.IRepositorioAnimal;
@@ -100,7 +99,7 @@ public class Fachada {
 		this.produtos.remover(idProduto);
 	}
 	
-	public void removerDoacaoProduto(String idDoacao) throws DoacaoProdutoInexistenteException, RemocaoNaoConcluidaException {
+	public void removerDoacaoProduto(String idDoacao) throws DoacaoProdutoInexistenteException {
 		this.doacaoprodutos.remover(idDoacao);
 	}
 	

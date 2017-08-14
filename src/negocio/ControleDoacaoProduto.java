@@ -2,7 +2,6 @@ package negocio;
 
 import excecao.DoacaoProdutoCadastradaException;
 import excecao.DoacaoProdutoInexistenteException;
-import excecao.RemocaoNaoConcluidaException;
 import excecao.SemPosicaoLivreException;
 import interfaces.IRepositorioDoacaoProduto;
 
@@ -35,14 +34,14 @@ public class ControleDoacaoProduto {
 			
 	}
 	
-	public void remover(String idDoacao) throws DoacaoProdutoInexistenteException, RemocaoNaoConcluidaException {
+	public void remover(String idDoacao) throws DoacaoProdutoInexistenteException {
 		if(this.doacaoprodutos.existe(idDoacao)) {
 			this.doacaoprodutos.remover(idDoacao);
 		} else {
 			DoacaoProdutoInexistenteException e = new  DoacaoProdutoInexistenteException(idDoacao);
 			throw e;
 		}
-		
+	
 		
 	}
 	
