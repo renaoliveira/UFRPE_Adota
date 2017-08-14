@@ -64,4 +64,10 @@ public class RepositorioPessoaArray implements IRepositorioPessoa {
 			return true;
 
 	}
+
+	@Override
+	public Pessoa getPessoa() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

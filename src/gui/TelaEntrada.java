@@ -7,10 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import excecao.PessoaInexistenteException;
+import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioPessoaLista;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -21,8 +24,8 @@ public class TelaEntrada extends JFrame {
 
 	private JPanel contentPane;
 	private static JFrame telaEntradaInstance;
-	private JTextField textFieldLogin;
-	private Pessoa principal = new Pessoa();
+	public JTextField textFieldLogin;
+	private Pessoa p = new Pessoa();
 	private JPasswordField passwordField;
 	/**
 	 * Launch the application.
@@ -35,6 +38,9 @@ public class TelaEntrada extends JFrame {
 		return TelaEntrada.telaEntradaInstance;
 	}
 	
+	public JTextField getLogin(){
+		return textFieldLogin;
+	}
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -71,13 +77,17 @@ public class TelaEntrada extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				principal.setLogin(textFieldLogin.getText());
-				principal.setSenha(passwordField.getText());
-				if(RepositorioPessoaLista.getInstance().existe(principal.getLogin())){
+				try {
+					p = Fachada.getInstance().procurarPessoa(textFieldLogin.getText());
+					System.out.println("TE: "+p.getLogin());
+				} catch (PessoaInexistenteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				if(Fachada.getInstance().existePessoa(p.getLogin()) && p.getSenha().equals(passwordField.getText())){
 					TelaOpcaoPessoal.getInstance().setVisible(true);
 					TelaEntrada.getInstance().dispose();
-				}
-					
+				}else	JOptionPane.showMessageDialog(null,"Dados Incorretos!");					
 				
 			}
 		});

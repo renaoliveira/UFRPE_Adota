@@ -14,4 +14,6 @@ public interface IRepositorioPessoa {
 	public void atualizar(Pessoa pessoa);
 
 	public boolean existe(String login);
+
+	public Pessoa getPessoa();
 }

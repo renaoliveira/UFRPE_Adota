@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import negocio.Endereco;
+import negocio.Fachada;
 import repositorio.RepositorioPessoaLista;
 
 import javax.swing.JLabel;
@@ -122,7 +123,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RepositorioPessoaLista.getInstance().getPessoa().setEndereco(casa);
+				Fachada.getInstance().getPessoa().setEndereco(casa);
 				TelaCadastroLarTemporario.getInstance().setVisible(false);
 			}
 		});

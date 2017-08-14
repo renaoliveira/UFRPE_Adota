@@ -38,7 +38,12 @@ public class ControlePessoa{
 		// COLOCAR VALIDACAO E REGRA DE NEGOCIO
 		this.pessoas.atualizar(pessoa);
 	}
-	public boolean existe(String login) throws PessoaInexistenteException{
+	public boolean existe(String login){
 		return this.pessoas.existe(login);
 	}
+
+	public Pessoa getPessoa() {
+		return pessoas.getPessoa();
+	}
+
 }

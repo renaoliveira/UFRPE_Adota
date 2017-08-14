@@ -102,7 +102,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaDoacao.getInstance().setVisible(true);
 			}
 		});
-		btnDoar.setBounds(168, 79, 89, 23);
+		btnDoar.setBounds(168, 69, 89, 23);
 		contentPane.add(btnDoar);
 		
 		JButton btnSair = new JButton("Voltar");
@@ -114,5 +114,14 @@ public class TelaOpcaoPessoal extends JFrame {
 		btnSair.setForeground(Color.RED);
 		btnSair.setBounds(168, 227, 89, 23);
 		contentPane.add(btnSair);
+		
+		JButton btnCadastrarAnimal = new JButton("Cadastrar Animal");
+		btnCadastrarAnimal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaCadastroAnimal.getInstance().setVisible(true);
+			}
+		});
+		btnCadastrarAnimal.setBounds(139, 193, 150, 23);
+		contentPane.add(btnCadastrarAnimal);
 	}
 }

@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import excecao.AnimalNãoCadastradoException;
 import excecao.LarNaoCadastradoException;
 import negocio.Animal;
+import negocio.Fachada;
+import negocio.Pessoa;
 import repositorio.RepositorioAnimalLista;
 import repositorio.RepositorioPessoaLista;
 import teste.Instancias;
@@ -122,8 +124,11 @@ public class TelaAdocao extends JFrame {
 		btnLarTemporario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				textArea.setText("");
+				
+				Pessoa tmp;
+				tmp = Fachada.getInstance().getPessoa();				
 				try {				
-					a.setLarTemporario(RepositorioPessoaLista.getInstance().getPessoa().getEndereco());
+					a.setLarTemporario(tmp.getEndereco());
 					textArea.append("\t Lar Temporário\nCidade: "+a.getLarTemporario().getCidade()+"\nBairro: "+a.getLarTemporario().getBairro()+
 									"\nRua: "+a.getLarTemporario().getRua()+"\nNum: "+a.getLarTemporario().getNumero()+
 									"\nComplemento:"+a.getLarTemporario().getComplemento());
@@ -161,6 +166,9 @@ public class TelaAdocao extends JFrame {
 		});
 		btnVoltar.setBounds(340, 227, 89, 23);
 		contentPane.add(btnVoltar);
+		
+		JLabel lblPessoa = new JLabel("Pessoa:");
+		lblPessoa.setBounds(10, 11, 46, 14);
+		contentPane.add(lblPessoa);
 	}
-
 }

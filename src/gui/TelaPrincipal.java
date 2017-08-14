@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import excecao.PessoaCadastradaException;
+import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioPessoaLista;
 import teste.Instancias;
@@ -55,14 +56,6 @@ public class TelaPrincipal extends JFrame {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Teste de instancia
-				p = Instancias.getInstancePessoa();
-				try {
-					RepositorioPessoaLista.getInstance().inserir(p);
-				} catch (PessoaCadastradaException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				TelaEntrada.getInstance().setVisible(true);				
 			}
 		});

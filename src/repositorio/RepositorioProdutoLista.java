@@ -102,7 +102,7 @@ public class RepositorioProdutoLista implements IRepositorioProduto{
 			}
 			else{
 				getProx().remover(idProduto);
-			}
+			}			
 		}
 	}
 	

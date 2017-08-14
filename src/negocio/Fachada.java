@@ -34,7 +34,11 @@ public class Fachada {
 		}
 		return instance;
 	}
-
+	
+	public Pessoa getPessoa(){
+		return pessoas.getPessoa();
+	}
+	
 	public void inserir(Pessoa pessoa) throws PessoaCadastradaException{
 		this.pessoas.cadastrar(pessoa);
 	}
@@ -83,7 +87,7 @@ public class Fachada {
 		this.produtos.atualizar(produto);
 	}
 	
-	public boolean existePessoa(String login) throws PessoaInexistenteException{
+	public boolean existePessoa(String login){
 		return this.pessoas.existe(login);
 	}
 	

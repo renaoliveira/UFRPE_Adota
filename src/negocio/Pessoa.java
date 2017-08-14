@@ -17,8 +17,8 @@ public class Pessoa {
 		this.login = login;
 	}
 
-	public Pessoa() {
-		System.out.println("Objeto da classe Pessoa instanciado com sucesso!");
+	public Pessoa(){
+		System.out.println("Objeto da classe Pessoa instanciado com sucesso!");		
 	}
 
 	public String getNome() {

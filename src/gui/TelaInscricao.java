@@ -90,7 +90,6 @@ public class TelaInscricao extends JFrame {
 				p.setLogin(textFieldLogin.getText());
 				p.setEmail(textFieldEmail.getText());
 				p.setSenha(passwordField.getText());
-				//p = Instancias.getInstancePessoa();
 				try {
 					Fachada.getInstance().inserir(p);
 					TelaInscricao.getInstance().setVisible(false);
