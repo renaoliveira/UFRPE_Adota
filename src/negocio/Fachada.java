@@ -1,22 +1,32 @@
 package negocio;
 
 import repositorio.RepositorioAnimalLista;
+import repositorio.RepositorioDoacaoProdutoArray;
 import repositorio.RepositorioPessoaLista;
 import repositorio.RepositorioProdutoLista;
+
 import excecao.AnimalNaoCadastradoException;
 import excecao.PessoaCadastradaException;
 import excecao.PessoaInexistenteException;
 import excecao.ProdutoCadastradoException;
 import excecao.ProdutoInexistenteException;
+import excecao.DoacaoProdutoCadastradaException;
+import excecao.DoacaoProdutoInexistenteException;
+import excecao.RemocaoNaoConcluidaException;
+import excecao.SemPosicaoLivreException;
+
 import interfaces.IRepositorioAnimal;
 import interfaces.IRepositorioPessoa;
 import interfaces.IRepositorioProduto;
+import interfaces.IRepositorioDoacaoProduto;
 
 public class Fachada {
 
 	private ControlePessoa pessoas;
 	private ControleAnimal animais;
 	private ControleProduto produtos;
+	private ControleDoacaoProduto doacaoprodutos;
+	
 	private static Fachada instance;
 
 	public Fachada() {
@@ -26,6 +36,8 @@ public class Fachada {
 		animais = new ControleAnimal(repositorioAnimais);
 		IRepositorioProduto repositorioProdutos = new RepositorioProdutoLista();
 		produtos = new ControleProduto(repositorioProdutos);
+		IRepositorioDoacaoProduto repositorioDoacaoProdutos = new RepositorioDoacaoProdutoArray();
+		doacaoprodutos = new ControleDoacaoProduto(repositorioDoacaoProdutos);
 	}
 
 	public static Fachada getInstance() {
@@ -55,6 +67,10 @@ public class Fachada {
 		this.produtos.inserir(produto);
 	}
 	
+	public void inserirDoacaoProduto(DoacaoProduto doacaoproduto) throws DoacaoProdutoCadastradaException, SemPosicaoLivreException {
+		this.doacaoprodutos.inserir(doacaoproduto);
+	}
+	
 	public Pessoa procurarPessoa(String login) throws PessoaInexistenteException{
 		return this.pessoas.procurar(login);
 	}
@@ -65,6 +81,10 @@ public class Fachada {
 	
 	public Produto procurarProduto(String idProduto) throws ProdutoInexistenteException {
 		return this.produtos.procurar(idProduto);
+	}
+	
+	public DoacaoProduto procurarDoacaoProduto(String idDoacao) throws DoacaoProdutoInexistenteException {
+		return this.doacaoprodutos.procurar(idDoacao);
 	}
 	
 	public void removerPessoa(String login) throws PessoaInexistenteException {
@@ -79,6 +99,10 @@ public class Fachada {
 		this.produtos.remover(idProduto);
 	}
 	
+	public void removerDoacaoProduto(String idDoacao) throws DoacaoProdutoInexistenteException, RemocaoNaoConcluidaException {
+		this.doacaoprodutos.remover(idDoacao);
+	}
+	
 	public void atualizar(Pessoa pessoa) {
 		this.pessoas.atualizar(pessoa);
 	}
@@ -91,6 +115,10 @@ public class Fachada {
 		this.produtos.atualizar(produto);
 	}
 	
+	public void atualizarDoacaoProduto(DoacaoProduto doacaoproduto) throws DoacaoProdutoInexistenteException {
+		this.doacaoprodutos.atualizar(doacaoproduto);
+	}
+	
 	public boolean existePessoa(String login){
 		return this.pessoas.existe(login);
 	}
@@ -101,5 +129,9 @@ public class Fachada {
 	
 	public boolean existeProduto(String idProduto) throws ProdutoInexistenteException{
 		return this.produtos.existe(idProduto);
+	}
+	
+	public boolean existeDoacaoProduto(String idDoacao) throws DoacaoProdutoInexistenteException{
+		return this.doacaoprodutos.existe(idDoacao);
 	}
 }
