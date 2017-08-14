@@ -62,12 +62,8 @@ public class TelaDoacao extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblProcurar = new JLabel("Procurar:");
-		lblProcurar.setBounds(100, 48, 61, 14);
-		contentPane.add(lblProcurar);
-		
 		textFieldProcurar = new JTextField();
-		textFieldProcurar.setBounds(153, 45, 128, 20);
+		textFieldProcurar.setBounds(197, 45, 136, 20);
 		contentPane.add(textFieldProcurar);
 		textFieldProcurar.setColumns(10);
 		
@@ -88,7 +84,7 @@ public class TelaDoacao extends JFrame {
 		textFieldQuantidade.setColumns(10);
 		
 		JLabel lblQuantidade = new JLabel("Quantidade:");
-		lblQuantidade.setBounds(100, 202, 70, 14);
+		lblQuantidade.setBounds(100, 202, 87, 14);
 		contentPane.add(lblQuantidade);
 		
 		JButton btnProcurar = new JButton("Procurar");
@@ -104,7 +100,7 @@ public class TelaDoacao extends JFrame {
 				}
 			}
 		});
-		btnProcurar.setBounds(291, 43, 24, 23);
+		btnProcurar.setBounds(100, 44, 101, 22);
 		contentPane.add(btnProcurar);
 		
 		JButton btnDoar = new JButton("Doar");

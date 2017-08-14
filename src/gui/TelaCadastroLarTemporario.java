@@ -82,7 +82,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 		contentPane.add(lblN);
 		
 		JLabel lblComplemento = new JLabel("Complemento:");
-		lblComplemento.setBounds(10, 159, 93, 14);
+		lblComplemento.setBounds(10, 159, 125, 14);
 		contentPane.add(lblComplemento);
 		
 		textFieldCidade = new JTextField();
@@ -122,6 +122,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setForeground(Color.BLUE);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Fachada.getInstance().getPessoa().setEndereco(casa);
@@ -129,7 +130,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 				instance = null;
 			}
 		});
-		btnCadastrar.setBounds(297, 210, 89, 23);
+		btnCadastrar.setBounds(279, 210, 107, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
@@ -146,7 +147,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 								"\nRua: "+casa.getRua()+"\nNum: "+casa.getNumero()+"\nComplemento:"+casa.getComplemento());
 			}
 		});
-		btnAdicionar.setBounds(130, 187, 77, 23);
+		btnAdicionar.setBounds(116, 187, 101, 23);
 		contentPane.add(btnAdicionar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -157,7 +158,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 			}
 		});
 		btnVoltar.setForeground(Color.RED);
-		btnVoltar.setBounds(140, 221, 61, 23);
+		btnVoltar.setBounds(116, 227, 101, 23);
 		contentPane.add(btnVoltar);
 	}
 }

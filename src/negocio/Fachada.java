@@ -3,7 +3,7 @@ package negocio;
 import repositorio.RepositorioAnimalLista;
 import repositorio.RepositorioPessoaLista;
 import repositorio.RepositorioProdutoLista;
-import excecao.AnimalNãoCadastradoException;
+import excecao.AnimalNaoCadastradoException;
 import excecao.PessoaCadastradaException;
 import excecao.PessoaInexistenteException;
 import excecao.ProdutoCadastradoException;
@@ -59,7 +59,7 @@ public class Fachada {
 		return this.pessoas.procurar(login);
 	}
 	
-	public Animal procurarAnimal(String id) throws AnimalNãoCadastradoException{
+	public Animal procurarAnimal(String id) throws AnimalNaoCadastradoException{
 		return this.animais.procurar(id);
 	}
 	
@@ -71,7 +71,7 @@ public class Fachada {
 		this.pessoas.remover(login);
 	}
 	
-	public void removerAnimal(String id){
+	public void removerAnimal(String id) throws AnimalNaoCadastradoException{
 		this.animais.remover(id);
 	}
 	

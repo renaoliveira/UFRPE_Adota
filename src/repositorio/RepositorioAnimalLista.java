@@ -1,6 +1,6 @@
 package repositorio;
 
-import excecao.AnimalNãoCadastradoException;
+import excecao.AnimalNaoCadastradoException;
 import interfaces.IRepositorioAnimal;
 import negocio.Animal;;
 
@@ -49,20 +49,20 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 		}
 	}
 
-	public Animal procurar(String id) throws AnimalNãoCadastradoException{
+	public Animal procurar(String id) throws AnimalNaoCadastradoException{
 		String n;
 		if(animal != null){
 			n = animal.getId();
 			while (!n.equals(id)) 			
 				return prox.procurar(id);			
 		}else{
-			AnimalNãoCadastradoException e = new AnimalNãoCadastradoException(id);
+			AnimalNaoCadastradoException e = new AnimalNaoCadastradoException(id);
 			throw e;
 		}
 		return animal;
 	}
 	
-	public void remover(String id) {
+	public void remover(String id) throws AnimalNaoCadastradoException{
 		
 		if(animal != null){
 			if(id == animal.getId()){
@@ -72,6 +72,9 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 			else{
 				getProx().remover(id);
 			}
+		}else{
+			AnimalNaoCadastradoException e = new AnimalNaoCadastradoException(id);
+			throw e;
 		}
 	}
 

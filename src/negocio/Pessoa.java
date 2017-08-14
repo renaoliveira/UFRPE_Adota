@@ -1,5 +1,8 @@
 package negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import excecao.LarNaoCadastradoException;
 
 public class Pessoa {
@@ -10,7 +13,7 @@ public class Pessoa {
 	private String email;
 	private String telefone;
 	private Endereco endereco;
-	private Animal pet;
+	private List<Animal> pets = new ArrayList<Animal>();
 	private Produto produto;
 
 	public Pessoa(String login) {
@@ -75,12 +78,17 @@ public class Pessoa {
 	}
 
 	public void setAdocao(Animal pet) {
-		this.pet = pet;
+		pets.add(pet);
 	}
 	
-	public Animal getAdocao(){
-		return this.pet;
+	public Animal getAdocao(int index){
+		return pets.get(index);
 	}
+	
+	public int getNumPets(){
+		return pets.size();
+	}
+	
 	public void setDoacao(Produto produto) {
 		this.produto = produto;
 	}

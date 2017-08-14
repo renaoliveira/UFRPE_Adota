@@ -1,6 +1,6 @@
 package repositorio;
 
-import excecao.AnimalNãoCadastradoException;
+import excecao.AnimalNaoCadastradoException;
 import excecao.ProdutoCadastradoException;
 import excecao.ProdutoInexistenteException;
 import interfaces.IRepositorioProduto;

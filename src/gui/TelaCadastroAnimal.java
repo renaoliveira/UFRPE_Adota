@@ -64,42 +64,43 @@ public class TelaCadastroAnimal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(121, 14, 46, 14);
+		lblNome.setBounds(96, 14, 46, 14);
 		contentPane.add(lblNome);
 		
 		textFieldNome = new JTextField();
-		textFieldNome.setBounds(174, 11, 132, 20);
+		textFieldNome.setBounds(149, 11, 132, 20);
 		contentPane.add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
 		JLabel lblEspecie = new JLabel("Especie:");
-		lblEspecie.setBounds(121, 52, 46, 14);
+		lblEspecie.setBounds(96, 52, 46, 14);
 		contentPane.add(lblEspecie);
 		
 		textFieldEspecie = new JTextField();
 		textFieldEspecie.setColumns(10);
-		textFieldEspecie.setBounds(174, 49, 132, 20);
+		textFieldEspecie.setBounds(149, 49, 132, 20);
 		contentPane.add(textFieldEspecie);
 		
 		JLabel lblCor = new JLabel("Cor:");
-		lblCor.setBounds(121, 90, 46, 14);
+		lblCor.setBounds(96, 90, 46, 14);
 		contentPane.add(lblCor);
 		
 		textFieldCor = new JTextField();
 		textFieldCor.setColumns(10);
-		textFieldCor.setBounds(174, 87, 132, 20);
+		textFieldCor.setBounds(149, 87, 132, 20);
 		contentPane.add(textFieldCor);
 		
 		JLabel lblPeso = new JLabel("Peso:");
-		lblPeso.setBounds(121, 133, 46, 14);
+		lblPeso.setBounds(96, 133, 46, 14);
 		contentPane.add(lblPeso);
 		
 		textFieldPeso = new JTextField();
 		textFieldPeso.setColumns(10);
-		textFieldPeso.setBounds(174, 130, 132, 20);
+		textFieldPeso.setBounds(149, 130, 132, 20);
 		contentPane.add(textFieldPeso);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setForeground(Color.BLUE);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				a.setNome(textFieldNome.getText());
@@ -113,7 +114,7 @@ public class TelaCadastroAnimal extends JFrame {
 				instance = null;
 			}
 		});
-		btnCadastrar.setBounds(174, 177, 89, 23);
+		btnCadastrar.setBounds(161, 181, 109, 33);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -123,7 +124,7 @@ public class TelaCadastroAnimal extends JFrame {
 			}
 		});
 		btnVoltar.setForeground(Color.RED);
-		btnVoltar.setBounds(187, 230, 61, 20);
+		btnVoltar.setBounds(171, 230, 89, 20);
 		contentPane.add(btnVoltar);
 	}
 }

@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 
 public class TelaInscricao extends JFrame {
 
@@ -28,6 +29,7 @@ public class TelaInscricao extends JFrame {
 	private JTextField textFieldEmail;
 	private Pessoa p = new Pessoa();
 	private JPasswordField passwordField;
+	private JTextField textFieldNome;
 	/**
 	 * Launch the application.
 	 */
@@ -85,8 +87,10 @@ public class TelaInscricao extends JFrame {
 		contentPane.add(textFieldEmail);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setForeground(Color.BLUE);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				p.setNome(textFieldNome.getText());
 				p.setLogin(textFieldLogin.getText());
 				p.setEmail(textFieldEmail.getText());
 				p.setSenha(passwordField.getText());
@@ -100,12 +104,21 @@ public class TelaInscricao extends JFrame {
 				}
 			}
 		});
-		btnCadastrar.setBounds(203, 186, 89, 23);
+		btnCadastrar.setBounds(194, 186, 98, 23);
 		contentPane.add(btnCadastrar);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(158, 140, 171, 20);
 		contentPane.add(passwordField);
+		
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setBounds(102, 29, 46, 14);
+		contentPane.add(lblNome);
+		
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(158, 26, 171, 20);
+		contentPane.add(textFieldNome);
+		textFieldNome.setColumns(10);
 	}
 
 }

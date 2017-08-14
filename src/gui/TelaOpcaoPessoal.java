@@ -125,6 +125,11 @@ public class TelaOpcaoPessoal extends JFrame {
 		contentPane.add(btnCadastrarAnimal);
 		
 		JButton btnStatusPessoal = new JButton("Status Pessoal");
+		btnStatusPessoal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelaSituacaoPessoal.getInstance().setVisible(true);
+			}
+		});
 		btnStatusPessoal.setBounds(157, 89, 121, 23);
 		contentPane.add(btnStatusPessoal);
 	}

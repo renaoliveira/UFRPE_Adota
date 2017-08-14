@@ -1,6 +1,6 @@
 package negocio;
 
-import excecao.AnimalNãoCadastradoException;
+import excecao.AnimalNaoCadastradoException;
 import interfaces.IRepositorioAnimal;
 
 public class ControleAnimal {
@@ -21,11 +21,11 @@ public class ControleAnimal {
 			System.out.println("Conta Invalida!");
 	}
 
-	public Animal procurar(String id) throws AnimalNãoCadastradoException {
+	public Animal procurar(String id) throws AnimalNaoCadastradoException {
 		return this.animais.procurar(id);
 	}
 
-	public void remover(String id) {
+	public void remover(String id) throws AnimalNaoCadastradoException{
 		// COLOCAR VALIDACAO E REGRA DE NEGOCIO
 		this.animais.remover(id);
 	}

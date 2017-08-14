@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import excecao.AnimalNãoCadastradoException;
+import excecao.AnimalNaoCadastradoException;
 import excecao.LarNaoCadastradoException;
 import negocio.Animal;
 import negocio.Fachada;
@@ -24,6 +24,10 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.JCheckBox;
+import javax.swing.JTextPane;
+import javax.swing.JFormattedTextField;
+import javax.swing.SwingConstants;
 
 public class TelaAdocao extends JFrame {
 
@@ -67,12 +71,8 @@ public class TelaAdocao extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblProcurar = new JLabel("Procurar:");
-		lblProcurar.setBounds(99, 74, 46, 14);
-		contentPane.add(lblProcurar);
-		
 		textFieldProcurar = new JTextField();
-		textFieldProcurar.setBounds(155, 71, 86, 20);
+		textFieldProcurar.setBounds(178, 71, 152, 20);
 		contentPane.add(textFieldProcurar);
 		textFieldProcurar.setColumns(10);
 
@@ -92,7 +92,7 @@ public class TelaAdocao extends JFrame {
 					a = Fachada.getInstance().procurarAnimal(textFieldProcurar.getText());
 					textArea.append("Nome: "+a.getNome()+"\nId: "+a.getId()+"\nEspécie: "+a.getEspecie()+ "\nCor: "+a.getCor());
 					
-				} catch (AnimalNãoCadastradoException e1) {
+				} catch (AnimalNaoCadastradoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					textArea.append("Animal de Id: " + textFieldProcurar.getText()+" Não está cadastrado!");
@@ -100,7 +100,7 @@ public class TelaAdocao extends JFrame {
 					
 			}
 		});
-		btnProcurar.setBounds(251, 70, 23, 23);
+		btnProcurar.setBounds(65, 70, 115, 22);
 		contentPane.add(btnProcurar);
 		
 		JLabel lblInfo = new JLabel("Info:");
@@ -111,8 +111,15 @@ public class TelaAdocao extends JFrame {
 		btnAdotar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
-				if(Fachada.getInstance().existeAnimal(textFieldProcurar.getText()))
+				if(Fachada.getInstance().existeAnimal(textFieldProcurar.getText())){
 					Fachada.getInstance().getPessoa().setAdocao(a);
+					try {
+						Fachada.getInstance().removerAnimal(a.getId());
+					} catch (AnimalNaoCadastradoException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
 				else textArea.append("Animal de Id: " + textFieldProcurar.getText()+" Não está cadastrado!");				
 			}
 		});
@@ -140,17 +147,6 @@ public class TelaAdocao extends JFrame {
 		});
 		btnLarTemporario.setBounds(340, 184, 86, 23);
 		contentPane.add(btnLarTemporario);
-		//Teste
-		JButton btnInstancia = new JButton("Instancia");
-		btnInstancia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				a = Instancias.getInstanceAnimal();
-				Fachada.getInstance().inserir(a);
-				System.out.println(RepositorioAnimalLista.tam);
-			}
-		});
-		btnInstancia.setBounds(155, 22, 89, 23);
-		contentPane.add(btnInstancia);
 		
 		JButton btnVoltar = new JButton("Voltar");
 		btnVoltar.setForeground(Color.RED);
@@ -162,9 +158,5 @@ public class TelaAdocao extends JFrame {
 		});
 		btnVoltar.setBounds(340, 227, 89, 23);
 		contentPane.add(btnVoltar);
-		
-		JLabel lblPessoa = new JLabel("Pessoa:");
-		lblPessoa.setBounds(10, 11, 46, 14);
-		contentPane.add(lblPessoa);
 	}
 }

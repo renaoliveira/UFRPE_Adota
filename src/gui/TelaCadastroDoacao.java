@@ -115,6 +115,7 @@ public class TelaCadastroDoacao extends JFrame {
 		contentPane.add(lblInfo);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setForeground(Color.BLUE);
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
