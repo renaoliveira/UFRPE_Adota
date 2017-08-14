@@ -37,4 +37,9 @@ public class ControleAnimal {
 	public boolean existe(String id){
 		return this.animais.existe(id);
 	}
+
+	public Animal getAnimal() {
+		// TODO Auto-generated method stub
+		return animais.getAnimal();
+	}
 }

@@ -13,4 +13,6 @@ public interface IRepositorioAnimal {
 	public Animal procurar(String id) throws AnimalNãoCadastradoException;
 
 	public boolean existe(String id);
+
+	public Animal getAnimal();
 }

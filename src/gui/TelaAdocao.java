@@ -87,10 +87,9 @@ public class TelaAdocao extends JFrame {
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				rep = RepositorioAnimalLista.getInstance();
 				textArea.setText("");				
 				try {
-					a = rep.procurar(textFieldProcurar.getText());
+					a = Fachada.getInstance().procurarAnimal(textFieldProcurar.getText());
 					textArea.append("Nome: "+a.getNome()+"\nId: "+a.getId()+"\nEspécie: "+a.getEspecie()+ "\nCor: "+a.getCor());
 					
 				} catch (AnimalNãoCadastradoException e1) {
@@ -112,8 +111,8 @@ public class TelaAdocao extends JFrame {
 		btnAdotar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
-				if(RepositorioAnimalLista.getInstance().existe(textFieldProcurar.getText()))
-					RepositorioPessoaLista.getInstance().getPessoa().setAdocao(a);
+				if(Fachada.getInstance().existeAnimal(textFieldProcurar.getText()))
+					Fachada.getInstance().getPessoa().setAdocao(a);
 				else textArea.append("Animal de Id: " + textFieldProcurar.getText()+" Não está cadastrado!");				
 			}
 		});
@@ -146,11 +145,8 @@ public class TelaAdocao extends JFrame {
 		btnInstancia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				a = Instancias.getInstanceAnimal();
-				rep = RepositorioAnimalLista.getInstance();
-			
-				rep.inserir(a);
+				Fachada.getInstance().inserir(a);
 				System.out.println(RepositorioAnimalLista.tam);
-
 			}
 		});
 		btnInstancia.setBounds(155, 22, 89, 23);

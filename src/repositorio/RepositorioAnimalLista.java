@@ -99,4 +99,10 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 		return RepositorioAnimalLista.instance;
 	}
 
+	@Override
+	public Animal getAnimal() {
+		// TODO Auto-generated method stub
+		return animal;
+	}
+
 }

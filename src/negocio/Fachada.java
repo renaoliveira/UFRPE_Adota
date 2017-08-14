@@ -39,6 +39,10 @@ public class Fachada {
 		return pessoas.getPessoa();
 	}
 	
+	public Animal getAnimal(){
+		return animais.getAnimal();
+	}
+	
 	public void inserir(Pessoa pessoa) throws PessoaCadastradaException{
 		this.pessoas.cadastrar(pessoa);
 	}

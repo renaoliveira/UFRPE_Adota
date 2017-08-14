@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
+import java.awt.Color;
 
 public class TelaCadastroLarTemporario extends JFrame {
 
@@ -124,7 +125,8 @@ public class TelaCadastroLarTemporario extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Fachada.getInstance().getPessoa().setEndereco(casa);
-				TelaCadastroLarTemporario.getInstance().setVisible(false);
+				TelaCadastroLarTemporario.getInstance().dispose();
+				instance = null;
 			}
 		});
 		btnCadastrar.setBounds(297, 210, 89, 23);
@@ -146,5 +148,16 @@ public class TelaCadastroLarTemporario extends JFrame {
 		});
 		btnAdicionar.setBounds(130, 187, 77, 23);
 		contentPane.add(btnAdicionar);
+		
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				TelaCadastroLarTemporario.getInstance().dispose();
+				instance = null;
+			}
+		});
+		btnVoltar.setForeground(Color.RED);
+		btnVoltar.setBounds(140, 221, 61, 23);
+		contentPane.add(btnVoltar);
 	}
 }

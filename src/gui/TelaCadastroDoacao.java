@@ -151,8 +151,9 @@ public class TelaCadastroDoacao extends JFrame {
 		btnVoltar.setForeground(Color.RED);
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TelaOpcaoPessoal.getInstance().setVisible(true);
-				TelaCadastroDoacao.getInstance().setVisible(false);
+				//TelaOpcaoPessoal.getInstance().setVisible(true);
+				TelaCadastroDoacao.getInstance().dispose();
+				instance = null;
 			}
 		});
 		btnVoltar.setBounds(134, 227, 89, 23);

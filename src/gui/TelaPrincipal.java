@@ -50,7 +50,7 @@ public class TelaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblAdotaUfrpe = new JLabel("Adota UFRPE");
-		lblAdotaUfrpe.setBounds(176, 30, 64, 36);
+		lblAdotaUfrpe.setBounds(180, 44, 96, 36);
 		contentPane.add(lblAdotaUfrpe);
 		
 		JButton btnEntrar = new JButton("Entrar");
@@ -68,7 +68,7 @@ public class TelaPrincipal extends JFrame {
 				TelaInscricao.getInstance().setVisible(true);
 			}
 		});
-		btnInscrever.setBounds(166, 143, 89, 23);
+		btnInscrever.setBounds(152, 145, 120, 23);
 		contentPane.add(btnInscrever);
 	}
 }

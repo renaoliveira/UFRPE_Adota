@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 public class TelaInscricao extends JFrame {
 
 	private JPanel contentPane;
-	private static JFrame telaInscricaoInstance;
+	private static JFrame instance;
 	private JTextField textFieldLogin;
 	private JTextField textFieldEmail;
 	private Pessoa p = new Pessoa();
@@ -33,10 +33,10 @@ public class TelaInscricao extends JFrame {
 	 */
 	
 	public static JFrame getInstance(){
-		if(TelaInscricao.telaInscricaoInstance == null)
-			TelaInscricao.telaInscricaoInstance = new TelaInscricao();
+		if(TelaInscricao.instance == null)
+			TelaInscricao.instance = new TelaInscricao();
 		
-		return TelaInscricao.telaInscricaoInstance;
+		return TelaInscricao.instance;
 	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -92,7 +92,8 @@ public class TelaInscricao extends JFrame {
 				p.setSenha(passwordField.getText());
 				try {
 					Fachada.getInstance().inserir(p);
-					TelaInscricao.getInstance().setVisible(false);
+					TelaInscricao.getInstance().dispose();
+					instance = null;
 				} catch (PessoaCadastradaException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -81,6 +81,12 @@ public class RepositorioAnimalArray implements IRepositorioAnimal {
 
 	}
 
+	@Override
+	public Animal getAnimal() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/*
 	 * public boolean existe (String id) { int i; for (i=0; i<animais.length;
 	 * i++) { if (animais[i] == null) { break; } else { if

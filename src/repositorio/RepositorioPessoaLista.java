@@ -60,8 +60,7 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 	public void inserir(Pessoa pessoa) throws PessoaCadastradaException{
 		
 		if (this.pessoa == null) {
-			this.pessoa = pessoa;
-			
+			this.pessoa = pessoa;			
 			tam++;// Aumenta o tamanho da lista;
 			prox = new RepositorioPessoaLista();
 			indice = tam;// Quando o objeto é instanciado ele armazena sua

@@ -75,7 +75,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaAdocao.getInstance().setVisible(true);
 			}
 		});
-		btnAdotar.setBounds(168, 35, 89, 23);
+		btnAdotar.setBounds(168, 21, 89, 23);
 		contentPane.add(btnAdotar);
 		
 		JButton btnCadastrarDoacao = new JButton("Cadastrar Produtos");
@@ -102,7 +102,7 @@ public class TelaOpcaoPessoal extends JFrame {
 				TelaDoacao.getInstance().setVisible(true);
 			}
 		});
-		btnDoar.setBounds(168, 69, 89, 23);
+		btnDoar.setBounds(168, 55, 89, 23);
 		contentPane.add(btnDoar);
 		
 		JButton btnSair = new JButton("Voltar");
@@ -123,5 +123,9 @@ public class TelaOpcaoPessoal extends JFrame {
 		});
 		btnCadastrarAnimal.setBounds(139, 193, 150, 23);
 		contentPane.add(btnCadastrarAnimal);
+		
+		JButton btnStatusPessoal = new JButton("Status Pessoal");
+		btnStatusPessoal.setBounds(157, 89, 121, 23);
+		contentPane.add(btnStatusPessoal);
 	}
 }

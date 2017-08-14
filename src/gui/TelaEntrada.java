@@ -23,7 +23,7 @@ import javax.swing.JPasswordField;
 public class TelaEntrada extends JFrame {
 
 	private JPanel contentPane;
-	private static JFrame telaEntradaInstance;
+	private static JFrame instance;
 	public JTextField textFieldLogin;
 	private Pessoa p = new Pessoa();
 	private JPasswordField passwordField;
@@ -31,11 +31,11 @@ public class TelaEntrada extends JFrame {
 	 * Launch the application.
 	 */
 	public static JFrame getInstance(){
-		if(TelaEntrada.telaEntradaInstance == null){
-			TelaEntrada.telaEntradaInstance = new TelaEntrada();
+		if(TelaEntrada.instance == null){
+			TelaEntrada.instance = new TelaEntrada();
 		}
 		
-		return TelaEntrada.telaEntradaInstance;
+		return TelaEntrada.instance;
 	}
 	
 	public JTextField getLogin(){
@@ -87,6 +87,7 @@ public class TelaEntrada extends JFrame {
 				if(Fachada.getInstance().existePessoa(p.getLogin()) && p.getSenha().equals(passwordField.getText())){
 					TelaOpcaoPessoal.getInstance().setVisible(true);
 					TelaEntrada.getInstance().dispose();
+					instance = null;
 				}else	JOptionPane.showMessageDialog(null,"Dados Incorretos!");					
 				
 			}
