@@ -73,7 +73,7 @@ public class TelaSituacaoPessoal extends JFrame {
 				textArea.setText("");
 				Pessoa tmp = Fachada.getInstance().getPessoa();
 				try {
-					textArea.append("Lar Temporário\nCidade: "+tmp.getEndereco().getCidade()+"\nBairro: "+tmp.getEndereco().getBairro()+
+					textArea.append("Endereço\nCidade: "+tmp.getEndereco().getCidade()+"\nBairro: "+tmp.getEndereco().getBairro()+
 									"\nRua: "+tmp.getEndereco().getRua()+"\nNum: "+tmp.getEndereco().getNumero()+
 									"\nComplemento:"+tmp.getEndereco().getComplemento());
 				} catch (LarNaoCadastradoException e1) {

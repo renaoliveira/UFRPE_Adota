@@ -152,7 +152,8 @@ public class TelaAdocao extends JFrame {
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TelaOpcaoPessoal.getInstance().setVisible(true);
-				TelaAdocao.getInstance().setVisible(false);
+				TelaAdocao.getInstance().dispose();
+				instance = null;
 			}
 		});
 		btnVoltar.setBounds(340, 227, 89, 23);
