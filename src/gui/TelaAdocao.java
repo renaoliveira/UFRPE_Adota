@@ -14,7 +14,6 @@ import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioAnimalLista;
 import repositorio.RepositorioPessoaLista;
-import teste.Instancias;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -35,7 +34,6 @@ public class TelaAdocao extends JFrame {
 	private static JFrame instance;
 	private JTextField textFieldProcurar;
 	private Animal a = new Animal();
-	private RepositorioAnimalLista rep;
 	
 	/**
 	 * Launch the application.
@@ -90,7 +88,7 @@ public class TelaAdocao extends JFrame {
 				textArea.setText("");				
 				try {
 					a = Fachada.getInstance().procurarAnimal(textFieldProcurar.getText());
-					textArea.append("Nome: "+a.getNome()+"\nId: "+a.getId()+"\nEspécie: "+a.getEspecie()+ "\nCor: "+a.getCor());
+					textArea.append("Nome: "+a.getNome()+"\nId: "+a.getId()+"\nEspécie: "+a.getEspecie()+ "\nCor: "+a.getCor()+"\nLocal na UFRPE: "+a.getLocal());
 					
 				} catch (AnimalNaoCadastradoException e1) {
 					// TODO Auto-generated catch block
@@ -118,6 +116,7 @@ public class TelaAdocao extends JFrame {
 					} catch (AnimalNaoCadastradoException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						textArea.append("Animal Não Disponível Para Adoção!");
 					}
 				}
 				else textArea.append("Animal de Id: " + textFieldProcurar.getText()+" Não está cadastrado!");				

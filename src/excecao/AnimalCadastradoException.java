@@ -1,14 +1,14 @@
 package excecao;
 
-public class AnimalNaoCadastradoException extends Exception{
+public class AnimalCadastradoException extends Exception{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String id;
 	
-	public AnimalNaoCadastradoException(String id){
-		super("Animal Não Existe");
+	public AnimalCadastradoException(String id){
+		super("ANIMAL JÀ CADASTRADO!");
 		this.id = id;
 	}
 	

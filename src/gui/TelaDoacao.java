@@ -90,6 +90,7 @@ public class TelaDoacao extends JFrame {
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
 				try {					
 					p = Fachada.getInstance().procurarProduto(textFieldProcurar.getText());
 					textArea.append("Doação de Produtos\nNome: "+String.valueOf(p.getIdProduto())+"\nTipo: "+p.getTipo()+
@@ -106,6 +107,7 @@ public class TelaDoacao extends JFrame {
 		JButton btnDoar = new JButton("Doar");
 		btnDoar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
 				p.setQuantidade(0);
 				p.agregaQuantidade(Integer.parseInt(textFieldQuantidade.getText()));
 				textArea.append("Doação de Produtos\nNome: "+String.valueOf(p.getIdProduto())+"\nTipo: "+p.getTipo()+

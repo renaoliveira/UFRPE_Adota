@@ -11,9 +11,6 @@ public class PessoaCadastradaException extends Exception{
 		this.login = login;
 	}
 	
-	public PessoaCadastradaException(){
-		
-	}
 	
 	public String getLogin(){
 		return login;

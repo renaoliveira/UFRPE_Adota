@@ -127,6 +127,7 @@ public class TelaSituacaoPessoal extends JFrame {
 		JButton btnInserirMaisInformacoes = new JButton("Inserir Mais Informacoes");
 		btnInserirMaisInformacoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
 				TelaMaisInfo.getInstance().setVisible(true);
 			}
 		});

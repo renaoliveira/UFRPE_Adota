@@ -11,7 +11,6 @@ import excecao.PessoaCadastradaException;
 import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioPessoaLista;
-import teste.Instancias;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -23,7 +22,6 @@ public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	private static JFrame instance;
-	private Pessoa p;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

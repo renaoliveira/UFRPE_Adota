@@ -11,7 +11,6 @@ import excecao.PessoaCadastradaException;
 import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioPessoaLista;
-import teste.Instancias;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;

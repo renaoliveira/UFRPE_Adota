@@ -32,7 +32,7 @@ public class TelaCadastroDoacao extends JFrame {
 	private JTextField textFieldTipo;
 	private JTextField textFieldPreco;
 	private JTextField textFieldDescricao;
-	private Produto produtos = new Produto();	
+	private Produto p = new Produto();	
 	/**
 	 * Launch the application.
 	 */
@@ -120,7 +120,9 @@ public class TelaCadastroDoacao extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
 				try {
-					Fachada.getInstance().inserir(produtos);
+					Fachada.getInstance().inserir(p);
+					TelaCadastroDoacao.getInstance().dispose();
+					instance = null;
 				} catch (ProdutoCadastradoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -136,12 +138,12 @@ public class TelaCadastroDoacao extends JFrame {
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				textArea.setText("");
-				produtos.setIdProduto(textFieldNome.getText());
-				produtos.setTipo(textFieldTipo.getText());
-				produtos.setPreco(Double.parseDouble(textFieldPreco.getText()));
-				produtos.setDescricao(textFieldDescricao.getText());
-				textArea.append("Cadastro de Produtos\nNome: "+String.valueOf(produtos.getIdProduto())+"\nTipo: "+produtos.getTipo()+
-								"\nPreço/Unidade/Kg: "+produtos.getPreco()+"\nDescrição:"+produtos.getDescricao());
+				p.setIdProduto(textFieldNome.getText());
+				p.setTipo(textFieldTipo.getText());
+				p.setPreco(Double.parseDouble(textFieldPreco.getText()));
+				p.setDescricao(textFieldDescricao.getText());
+				textArea.append("Cadastro de Produtos\nNome: "+String.valueOf(p.getIdProduto())+"\nTipo: "+p.getTipo()+
+								"\nPreço/Unidade/Kg: "+p.getPreco()+"\nDescrição:"+p.getDescricao());
 	
 			}
 		});

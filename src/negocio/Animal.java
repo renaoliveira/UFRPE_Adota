@@ -14,7 +14,7 @@ public class Animal {
 	private String pelagem;
 	private LocalUfrpe abandono;
 	private boolean castracao;
-	private LocalUfrpe local;
+	private String local;
 	private String foto;
 	private String historico;
 	private Endereco larTmp;
@@ -116,11 +116,11 @@ public class Animal {
 		this.castracao = castracao;
 	}
 
-	public LocalUfrpe getLocal() {
+	public String getLocal() {
 		return local;
 	}
 
-	public void setLocal(LocalUfrpe local) {
+	public void setLocal(String local) {
 		this.local = local;
 	}
 

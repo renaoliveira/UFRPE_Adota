@@ -1,5 +1,6 @@
 package negocio;
 
+import excecao.AnimalCadastradoException;
 import excecao.AnimalNaoCadastradoException;
 import interfaces.IRepositorioAnimal;
 
@@ -11,14 +12,15 @@ public class ControleAnimal {
 		this.animais = repositorio;
 	}
 
-	public void cadastrar(Animal animal) {
+	public void cadastrar(Animal animal) throws AnimalCadastradoException{
 		if (animal != null) {
 			if (!(animais.existe(animal.getId()))) {
 				animais.inserir(animal);
-			} else
-				System.out.println("Conta Ja Cadastrada!");
-		} else
-			System.out.println("Conta Invalida!");
+			}  else{
+				AnimalCadastradoException e = new AnimalCadastradoException(animal.getId());
+				throw e;
+			}
+		} else System.out.println("Animal Invalido");
 	}
 
 	public Animal procurar(String id) throws AnimalNaoCadastradoException {

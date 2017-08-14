@@ -1,10 +1,11 @@
 package interfaces;
 
+import excecao.AnimalCadastradoException;
 import excecao.AnimalNaoCadastradoException;
 import negocio.Animal;
 
 public interface IRepositorioAnimal {
-	public void inserir(Animal animal);
+	public void inserir(Animal animal) throws AnimalCadastradoException;
 
 	public void remover(String id)throws AnimalNaoCadastradoException;
 

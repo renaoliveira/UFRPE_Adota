@@ -1,5 +1,6 @@
 package repositorio;
 
+import excecao.AnimalCadastradoException;
 import excecao.AnimalNaoCadastradoException;
 import interfaces.IRepositorioAnimal;
 import negocio.Animal;;
@@ -37,7 +38,7 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 		return atual;
 	}
 
-	public void inserir(Animal animal) {
+	public void inserir(Animal animal) throws AnimalCadastradoException{
 		if (this.animal == null) {
 			this.animal = animal;
 			tam++;// Aumenta o tamanho da lista;

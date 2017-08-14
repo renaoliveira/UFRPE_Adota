@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import excecao.AnimalCadastradoException;
 import negocio.Animal;
 import negocio.Fachada;
-import teste.Instancias;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +28,7 @@ public class TelaCadastroAnimal extends JFrame {
 	private JTextField textFieldCor;
 	private JTextField textFieldPeso;
 	private Animal a = new Animal();
+	private JTextField textFieldLocal;
 	/**
 	 * Launch the application.
 	 */
@@ -91,12 +92,12 @@ public class TelaCadastroAnimal extends JFrame {
 		contentPane.add(textFieldCor);
 		
 		JLabel lblPeso = new JLabel("Peso:");
-		lblPeso.setBounds(96, 133, 46, 14);
+		lblPeso.setBounds(96, 124, 46, 14);
 		contentPane.add(lblPeso);
 		
 		textFieldPeso = new JTextField();
 		textFieldPeso.setColumns(10);
-		textFieldPeso.setBounds(149, 130, 132, 20);
+		textFieldPeso.setBounds(149, 124, 132, 20);
 		contentPane.add(textFieldPeso);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
@@ -108,13 +109,20 @@ public class TelaCadastroAnimal extends JFrame {
 				a.setEspecie(textFieldEspecie.getText());
 				a.setCor(textFieldCor.getText());
 				a.setPeso(Float.parseFloat(textFieldPeso.getText()));
-				Fachada.getInstance().inserir(a);
-				JOptionPane.showMessageDialog(null,"Animal Cadastrado!");
-				TelaCadastroAnimal.getInstance().dispose();
-				instance = null;
+				a.setLocal(textFieldLocal.getText());
+				try {
+					Fachada.getInstance().inserir(a);
+					JOptionPane.showMessageDialog(null,"Animal Cadastrado!");
+					TelaCadastroAnimal.getInstance().dispose();
+					instance = null;
+				} catch (AnimalCadastradoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		});
-		btnCadastrar.setBounds(161, 181, 109, 33);
+		btnCadastrar.setBounds(159, 196, 109, 33);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnVoltar = new JButton("Voltar");
@@ -126,5 +134,14 @@ public class TelaCadastroAnimal extends JFrame {
 		btnVoltar.setForeground(Color.RED);
 		btnVoltar.setBounds(171, 230, 89, 20);
 		contentPane.add(btnVoltar);
+		
+		JLabel lblLocal = new JLabel("Local:");
+		lblLocal.setBounds(96, 161, 46, 14);
+		contentPane.add(lblLocal);
+		
+		textFieldLocal = new JTextField();
+		textFieldLocal.setColumns(10);
+		textFieldLocal.setBounds(149, 158, 132, 20);
+		contentPane.add(textFieldLocal);
 	}
 }
