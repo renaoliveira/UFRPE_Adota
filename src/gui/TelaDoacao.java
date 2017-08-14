@@ -6,21 +6,27 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import excecao.ProdutoInexistenteException;
+import negocio.Fachada;
+import negocio.Produto;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class TelaDoacao extends JFrame {
 
 	private JPanel contentPane;
-	private static JFrame instance;
-	private JTextField textFieldNome;
-	private JTextField textFieldTipo;
+	private JTextField textFieldProcurar;
 	private JTextField textFieldQuantidade;
-	private JTextField textFieldPreco;
-	private JTextField textFieldDescricao;
+	private static JFrame instance; 
+	private Produto p;
+
 	/**
 	 * Launch the application.
 	 */
@@ -28,9 +34,9 @@ public class TelaDoacao extends JFrame {
 	public static JFrame getInstance(){
 		if(TelaDoacao.instance == null)
 			TelaDoacao.instance = new TelaDoacao();
-		
 		return TelaDoacao.instance;
 	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -55,65 +61,62 @@ public class TelaDoacao extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(10, 11, 46, 14);
-		contentPane.add(lblNome);
+		JLabel lblProcurar = new JLabel("Procurar:");
+		lblProcurar.setBounds(100, 48, 61, 14);
+		contentPane.add(lblProcurar);
 		
-		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(10, 36, 46, 14);
-		contentPane.add(lblTipo);
-		
-		JLabel lblQuantidade = new JLabel("Quantidade:");
-		lblQuantidade.setBounds(10, 61, 66, 14);
-		contentPane.add(lblQuantidade);
-		
-		JLabel lblPreco = new JLabel("Pre\u00E7o:");
-		lblPreco.setBounds(10, 86, 46, 14);
-		contentPane.add(lblPreco);
-		
-		JLabel lblDescrio = new JLabel("Descri\u00E7\u00E3o:");
-		lblDescrio.setBounds(10, 128, 66, 14);
-		contentPane.add(lblDescrio);
-		
-		textFieldNome = new JTextField();
-		textFieldNome.setBounds(99, 8, 155, 20);
-		contentPane.add(textFieldNome);
-		textFieldNome.setColumns(10);
-		
-		textFieldTipo = new JTextField();
-		textFieldTipo.setColumns(10);
-		textFieldTipo.setBounds(99, 33, 155, 20);
-		contentPane.add(textFieldTipo);
-		
-		textFieldQuantidade = new JTextField();
-		textFieldQuantidade.setColumns(10);
-		textFieldQuantidade.setBounds(99, 58, 155, 20);
-		contentPane.add(textFieldQuantidade);
-		
-		textFieldPreco = new JTextField();
-		textFieldPreco.setColumns(10);
-		textFieldPreco.setBounds(99, 83, 155, 20);
-		contentPane.add(textFieldPreco);
-		
-		textFieldDescricao = new JTextField();
-		textFieldDescricao.setColumns(10);
-		textFieldDescricao.setBounds(99, 125, 155, 53);
-		contentPane.add(textFieldDescricao);
-		
-		JButton btnDoar = new JButton("Doar");
-		btnDoar.setBounds(133, 189, 89, 23);
-		contentPane.add(btnDoar);
+		textFieldProcurar = new JTextField();
+		textFieldProcurar.setBounds(153, 45, 128, 20);
+		contentPane.add(textFieldProcurar);
+		textFieldProcurar.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(290, 5, 134, 250);
+		scrollPane.setBounds(100, 101, 233, 87);
 		contentPane.add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		
 		JLabel lblInfo = new JLabel("Info:");
-		lblInfo.setBounds(258, 106, 46, 14);
+		lblInfo.setBounds(63, 107, 46, 14);
 		contentPane.add(lblInfo);
+		
+		textFieldQuantidade = new JTextField();
+		textFieldQuantidade.setBounds(166, 199, 70, 20);
+		contentPane.add(textFieldQuantidade);
+		textFieldQuantidade.setColumns(10);
+		
+		JLabel lblQuantidade = new JLabel("Quantidade:");
+		lblQuantidade.setBounds(100, 202, 70, 14);
+		contentPane.add(lblQuantidade);
+		
+		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {					
+					p = Fachada.getInstance().procurarProduto(textFieldProcurar.getText());
+					textArea.append("Doação de Produtos\nNome: "+String.valueOf(p.getIdProduto())+"\nTipo: "+p.getTipo()+
+							"\nPreço/Unidade/Kg: "+p.getPreco()+"\nDescrição:"+p.getDescricao());
+				} catch (ProdutoInexistenteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnProcurar.setBounds(291, 43, 24, 23);
+		contentPane.add(btnProcurar);
+		
+		JButton btnDoar = new JButton("Doar");
+		btnDoar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				p.setQuantidade(0);
+				p.agregaQuantidade(Integer.parseInt(textFieldQuantidade.getText()));
+				textArea.append("Doação de Produtos\nNome: "+String.valueOf(p.getIdProduto())+"\nTipo: "+p.getTipo()+
+						"\nPreço/Unidade/Kg: "+p.getPreco()+"\nDescrição:"+p.getDescricao()+"\nQuantidade: "+p.getQuantidade()+
+						"\nValor: "+p.valorDoacao(Integer.parseInt(textFieldQuantidade.getText()), p.getPreco()));
+			}
+		});
+		btnDoar.setBounds(246, 198, 87, 23);
+		contentPane.add(btnDoar);
 	}
-
 }

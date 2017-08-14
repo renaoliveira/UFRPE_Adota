@@ -26,6 +26,10 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 		return indice;
 	}
 	
+	public Pessoa getPessoa(){
+		return pessoa;
+	}
+	
 	public static RepositorioPessoaLista getInstance(){
 		if(RepositorioPessoaLista.instance == null)
 			RepositorioPessoaLista.instance = new RepositorioPessoaLista();
@@ -91,7 +95,6 @@ public class RepositorioPessoaLista implements IRepositorioPessoa {
 	}
 	//Remove um elemento do repositório lista
 	//Recebe o login da pessoa que sera removida do repositorio
-	//
 	public void remover(String login) {
 		
 		if(pessoa != null){

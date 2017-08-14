@@ -1,5 +1,6 @@
 package negocio;
 
+import excecao.AnimalNãoCadastradoException;
 import interfaces.IRepositorioAnimal;
 
 public class ControleAnimal {
@@ -20,7 +21,7 @@ public class ControleAnimal {
 			System.out.println("Conta Invalida!");
 	}
 
-	public Animal procurar(String id) {
+	public Animal procurar(String id) throws AnimalNãoCadastradoException {
 		return this.animais.procurar(id);
 	}
 

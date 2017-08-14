@@ -55,5 +55,12 @@ public class Produto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-
+	
+	public double valorDoacao(int quantidade, double preco){		
+		return preco*quantidade;
+	}
+	
+	public void agregaQuantidade(int quantidade){
+		setQuantidade(this.getQuantidade()+quantidade);
+	}
 }

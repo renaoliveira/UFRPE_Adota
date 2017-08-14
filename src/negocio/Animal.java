@@ -17,6 +17,7 @@ public class Animal {
 	private LocalUfrpe local;
 	private String foto;
 	private String historico;
+	private Endereco larTmp;
 
 	public Animal(String nome, String id) {
 		this.nome = nome;
@@ -146,5 +147,12 @@ public class Animal {
 	public void setAbandono(LocalUfrpe abandono) {
 		this.abandono = abandono;
 	}
-
+	
+	public void setLarTemporario(Endereco larTmp){
+		this.larTmp = larTmp;
+	}
+	
+	public Endereco getLarTemporario(){
+		return larTmp;
+	}
 }

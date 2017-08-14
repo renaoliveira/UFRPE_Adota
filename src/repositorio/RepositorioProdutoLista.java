@@ -1,5 +1,6 @@
 package repositorio;
 
+import excecao.AnimalNãoCadastradoException;
 import excecao.ProdutoCadastradoException;
 import excecao.ProdutoInexistenteException;
 import interfaces.IRepositorioProduto;
@@ -68,7 +69,9 @@ public class RepositorioProdutoLista implements IRepositorioProduto{
 			prox.inserir(produto);
 		}
 	} 
-
+	public Produto getProduto(){
+		return produto;
+	}
 	
 	/* Procura um produto no RepositórioProdutoLista e retorna o produto procurado. 
 	 * Recebe como o parâmetro o id do produto e enquanto não encontrar o produto com o referido id, 
@@ -76,17 +79,12 @@ public class RepositorioProdutoLista implements IRepositorioProduto{
 	 * 
 	*/
 	public Produto procurar(String idProduto) throws ProdutoInexistenteException {
-		boolean achou = false;
 		String n;
-		while(!achou && produto!=null){
+		if(produto != null){
 			n = produto.getIdProduto();
-			if(n.equals(idProduto)){
-				achou = true;
-			} else {
-				return prox.procurar(idProduto);
-			}
-		}
-		if(produto == null){
+			while (!n.equals(idProduto)) 			
+				return prox.procurar(idProduto);			
+		}else{
 			ProdutoInexistenteException e = new ProdutoInexistenteException(idProduto);
 			throw e;
 		}
@@ -116,15 +114,11 @@ public class RepositorioProdutoLista implements IRepositorioProduto{
 	 * Recebe como parâmetro o id do produto, retorna true se existir e false caso não existir. 
 	*/
 	public boolean existe(String idProduto){
-		boolean achou = false;
 		String n;
-		while (!achou && produto != null) {
+		if(produto != null){
 			n = produto.getIdProduto();
-			if (n.equals(idProduto)) {
-				achou = true;
-			} else {
-				return prox.existe(idProduto);
-			}
+			while (!n.equals(idProduto)) 			
+				return prox.existe(idProduto);			
 		}
 		if(produto == null)
 			return false;

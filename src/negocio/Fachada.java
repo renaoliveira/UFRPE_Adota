@@ -3,6 +3,7 @@ package negocio;
 import repositorio.RepositorioAnimalLista;
 import repositorio.RepositorioPessoaLista;
 import repositorio.RepositorioProdutoLista;
+import excecao.AnimalNãoCadastradoException;
 import excecao.PessoaCadastradaException;
 import excecao.PessoaInexistenteException;
 import excecao.ProdutoCadastradoException;
@@ -50,7 +51,7 @@ public class Fachada {
 		return this.pessoas.procurar(login);
 	}
 	
-	public Animal procurarAnimal(String id){
+	public Animal procurarAnimal(String id) throws AnimalNãoCadastradoException{
 		return this.animais.procurar(id);
 	}
 	

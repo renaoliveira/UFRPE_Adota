@@ -1,5 +1,6 @@
 package repositorio;
 
+import excecao.AnimalNãoCadastradoException;
 import interfaces.IRepositorioAnimal;
 import negocio.Animal;;
 
@@ -7,6 +8,7 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 
 	private Animal animal;
 	private RepositorioAnimalLista prox;
+	private static RepositorioAnimalLista instance;
 	public static int tam; // Tamanho da Lista. Atributo pertence a classe e não
 							// ao objeto;
 	private int indice; // Respectiva posição na lista. Atributo pertence ao
@@ -35,7 +37,7 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 		return atual;
 	}
 
-	public void inserir(Animal pessoa) {
+	public void inserir(Animal animal) {
 		if (this.animal == null) {
 			this.animal = animal;
 			tam++;// Aumenta o tamanho da lista;
@@ -47,16 +49,15 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 		}
 	}
 
-	public Animal procurar(String id) {
-		boolean achou = false;
+	public Animal procurar(String id) throws AnimalNãoCadastradoException{
 		String n;
-		while (!achou && animal != null) {
+		if(animal != null){
 			n = animal.getId();
-			if (n.equals(id)) {
-				achou = true;
-			} else {
-				return prox.procurar(id);
-			}
+			while (!n.equals(id)) 			
+				return prox.procurar(id);			
+		}else{
+			AnimalNãoCadastradoException e = new AnimalNãoCadastradoException(id);
+			throw e;
 		}
 		return animal;
 	}
@@ -79,10 +80,23 @@ public class RepositorioAnimalLista implements IRepositorioAnimal {
 	}
 
 	public boolean existe(String id) {
-		if (procurar(id) != null)
-			return true;
-		else
+		String n;
+		if(animal != null){
+			n = animal.getId();
+			while (!n.equals(id)) 			
+				return prox.existe(id);			
+		}
+		if(animal == null)
 			return false;
+		else return true;
+	}
+
+	public static RepositorioAnimalLista getInstance() {
+		// TODO Auto-generated method stub
+		if(RepositorioAnimalLista.instance == null)
+			RepositorioAnimalLista.instance = new RepositorioAnimalLista();
+		
+		return RepositorioAnimalLista.instance;
 	}
 
 }

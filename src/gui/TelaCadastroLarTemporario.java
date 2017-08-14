@@ -6,10 +6,17 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import negocio.Endereco;
+import repositorio.RepositorioPessoaLista;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
 
 public class TelaCadastroLarTemporario extends JFrame {
 
@@ -20,7 +27,7 @@ public class TelaCadastroLarTemporario extends JFrame {
 	private JTextField textFieldRua;
 	private JTextField textFieldNum;
 	private JTextField textFieldComplemento;
-	private JTextField textField_5;
+	private Endereco casa;
 
 	/**
 	 * Launch the application.
@@ -105,21 +112,38 @@ public class TelaCadastroLarTemporario extends JFrame {
 		scrollPane.setBounds(269, 39, 140, 160);
 		contentPane.add(scrollPane);
 		
-		textField_5 = new JTextField();
-		scrollPane.setViewportView(textField_5);
-		textField_5.setColumns(10);
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		
 		JLabel lblNewLabel = new JLabel("Info:");
 		lblNewLabel.setBounds(269, 19, 46, 14);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RepositorioPessoaLista.getInstance().getPessoa().setEndereco(casa);
+				TelaCadastroLarTemporario.getInstance().setVisible(false);
+			}
+		});
 		btnCadastrar.setBounds(297, 210, 89, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText("");
+				casa = new Endereco();
+				casa.setCidade(textFieldCidade.getText());
+				casa.setBairro(textFieldBairro.getText());
+				casa.setRua(textFieldRua.getText());
+				casa.setNumero(Integer.parseInt(textFieldNum.getText()));
+				casa.setComplemento(textFieldComplemento.getText());
+				textArea.append("Lar Temporário\nCidade: "+casa.getCidade()+"\nBairro: "+casa.getBairro()+
+								"\nRua: "+casa.getRua()+"\nNum: "+casa.getNumero()+"\nComplemento:"+casa.getComplemento());
+			}
+		});
 		btnAdicionar.setBounds(130, 187, 77, 23);
 		contentPane.add(btnAdicionar);
 	}
-
 }

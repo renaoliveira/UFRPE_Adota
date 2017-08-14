@@ -56,7 +56,6 @@ public class TelaPrincipal extends JFrame {
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Teste de instancia
-				Instancias.getInstance();
 				p = Instancias.getInstancePessoa();
 				try {
 					RepositorioPessoaLista.getInstance().inserir(p);

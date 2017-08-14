@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import excecao.PessoaCadastradaException;
+import negocio.Fachada;
 import negocio.Pessoa;
 import repositorio.RepositorioPessoaLista;
 import teste.Instancias;
@@ -91,7 +92,7 @@ public class TelaInscricao extends JFrame {
 				p.setSenha(passwordField.getText());
 				//p = Instancias.getInstancePessoa();
 				try {
-					RepositorioPessoaLista.getInstance().inserir(p);
+					Fachada.getInstance().inserir(p);
 					TelaInscricao.getInstance().setVisible(false);
 				} catch (PessoaCadastradaException e1) {
 					// TODO Auto-generated catch block

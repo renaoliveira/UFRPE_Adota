@@ -1,5 +1,7 @@
 package negocio;
 
+import excecao.LarNaoCadastradoException;
+
 public class Pessoa {
 
 	private String nome;
@@ -8,6 +10,8 @@ public class Pessoa {
 	private String email;
 	private String telefone;
 	private Endereco endereco;
+	private Animal pet;
+	private Produto produto;
 
 	public Pessoa(String login) {
 		this.login = login;
@@ -57,21 +61,32 @@ public class Pessoa {
 		this.telefone = telefone;
 	}
 
-	public Endereco getEndereco() {
-		return endereco;
+	public Endereco getEndereco() throws LarNaoCadastradoException{
+		if(endereco != null)
+			return endereco;
+		else{
+			LarNaoCadastradoException e = new LarNaoCadastradoException(endereco);
+			throw e;
+		}
 	}
 
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(Endereco endereco){
 		this.endereco = endereco;
 	}
 
-	public void adotar() {
+	public void setAdocao(Animal pet) {
+		this.pet = pet;
 	}
-
-	public void doacaoProduto() {
+	
+	public Animal getAdocao(){
+		return this.pet;
 	}
-
-	public void Lar() {
+	public void setDoacao(Produto produto) {
+		this.produto = produto;
+	}
+	
+	public Produto getProduto(){
+		return this.produto;
 	}
 
 }
